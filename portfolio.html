@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Our Portfolio</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: #f9f9f9;
+    }
+    nav {
+      background: #5a4b8b;
+      padding: 1rem;
+      text-align: center;
+    }
+    nav a {
+      color: #fff;
+      text-decoration: none;
+      margin: 0 20px;
+      font-weight: 600;
+    }
+    nav a:hover {
+      text-decoration: underline;
+    }
+    .container {
+      max-width: 1000px;
+      margin: auto;
+      padding: 2rem;
+    }
+    h1 {
+      text-align: center;
+      color: #5a4b8b;
+    }
+    .grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+      justify-content: center;
+    }
+    .project {
+      background: white;
+      padding: 1rem;
+      width: 280px;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      text-align: center;
+    }
+    .project h3 {
+      color: #6c63ff;
+    }
+    footer {
+      background: #5a4b8b;
+      color: #dcdcdc;
+      text-align: center;
+      padding: 1.2rem 1rem;
+      font-size: 0.9rem;
+      box-shadow: 0 -3px 10px rgba(90, 75, 139, 0.5);
+      margin-top: auto;
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <a href="chat.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="services.html">Services</a>
+    <a href="portfolio.html">Portfolio</a>
+    <a href="contact.html">Contact</a>
+    <a href="chatbot.html" >Chatbot</a>
+  </nav>
+
+  <div class="container">
+    <h1>Our Portfolio</h1>
+    <div class="grid">
+      <div class="project">
+        <h3>eCommerce Store</h3>
+        <p>Built with React & Stripe</p>
+      </div>
+      <div class="project">
+        <h3>Health Portal</h3>
+        <p>Laravel-based patient management system</p>
+      </div>
+      <div class="project">
+        <h3>Blog Platform</h3>
+        <p>SEO-optimized blogging with WordPress</p>
+      </div>
+      <div class="project">
+        <h3>Educational LMS</h3>
+        <p>Online learning system using Node.js & MongoDB</p>
+      </div>
+      <div class="project">
+        <h3>Travel Booking App</h3>
+        <p>Mobile-first design with Flutter & Firebase</p>
+      </div>
+      <div class="project">
+        <h3>ChatGPT-Powered Chatbot</h3>
+        <p>Customer support bot integrated with OpenAI API</p>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    &copy; 2025 My Professional Website. All rights reserved.
+  </footer>
+</body>
+</html>

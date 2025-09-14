@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Chatbot - SEO Chatbot Portal</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet" />
+  <style>
+    * {
+      margin: 0; padding: 0; box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Open Sans', sans-serif;
+      background-color: #f4f7fc;
+      color: #333;
+      line-height: 1.6;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    header {
+      background: linear-gradient(135deg, #667eea, #764ba2);
+      color: white;
+      padding: 1.5rem 2rem;
+      text-align: center;
+      box-shadow: 0 3px 10px rgba(102, 126, 234, 0.6);
+    }
+
+    header h1 {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 700;
+      font-size: 2.2rem;
+      letter-spacing: 1.2px;
+    }
+
+    nav {
+      background: #5a4b8b;
+      display: flex;
+      justify-content: center;
+      padding: 0.75rem 0;
+      box-shadow: 0 2px 8px rgba(90, 75, 139, 0.5);
+    }
+
+    nav a {
+      color: #e6e9f0;
+      text-decoration: none;
+      margin: 0 1.5rem;
+      font-weight: 600;
+      font-size: 1rem;
+      padding: 0.4rem 1rem;
+      border-radius: 20px;
+      transition: background-color 0.3s ease;
+    }
+
+    nav a:hover,
+    nav a.active {
+      background-color: #8e7cc3;
+      box-shadow: 0 0 10px #8e7cc3;
+      color: white;
+    }
+
+    main {
+      flex-grow: 1;
+      max-width: 960px;
+      margin: 3rem auto 4rem;
+      background: white;
+      padding: 2.5rem 3rem;
+      border-radius: 16px;
+      box-shadow: 0 15px 30px rgba(0,0,0,0.07);
+    }
+
+    main h2 {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 700;
+      color: #5a4b8b;
+      margin-bottom: 1.2rem;
+      font-size: 1.8rem;
+    }
+
+    p {
+      margin-bottom: 1.2rem;
+      font-size: 1.1rem;
+    }
+
+    button {
+      background-color: #764ba2;
+      color: white;
+      border: none;
+      padding: 0.75rem 2.2rem;
+      font-size: 1.1rem;
+      font-weight: 700;
+      border-radius: 30px;
+      cursor: pointer;
+      box-shadow: 0 4px 15px rgba(118, 75, 162, 0.5);
+      transition: background-color 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #5a3a85;
+    }
+
+    input[type="text"], input[type="email"], textarea {
+      width: 100%;
+      padding: 0.8rem 1rem;
+      font-size: 1rem;
+      border-radius: 12px;
+      border: 1.5px solid #ccc;
+      margin-bottom: 1.5rem;
+      transition: border-color 0.3s ease, box-shadow 0.3s ease;
+      font-family: 'Open Sans', sans-serif;
+    }
+
+    input[type="text"]:focus, input[type="email"]:focus, textarea:focus {
+      border-color: #764ba2;
+      box-shadow: 0 0 12px #764ba2;
+      outline: none;
+    }
+
+    .message {
+  margin-bottom: 1rem;
+  padding: 0.8rem 1.2rem;
+  border-radius: 12px;
+  max-width: 80%;
+  font-size: 1rem;
+  line-height: 1.4;
+}
+
+.user-msg {
+  background-color: #e0d4f7;
+  align-self: flex-end;
+  text-align: right;
+}
+
+.bot-msg {
+  background-color: #dfe9f3;
+  align-self: flex-start;
+}
+
+
+    footer {
+      background: #5a4b8b;
+      color: #dcdcdc;
+      text-align: center;
+      padding: 1.2rem 1rem;
+      font-size: 0.9rem;
+      box-shadow: 0 -3px 10px rgba(90, 75, 139, 0.5);
+      margin-top: auto;
+    }
+
+       /* Responsive */
+    @media (max-width: 600px) {
+      nav {
+        flex-wrap: wrap;
+      }
+
+      nav a {
+        margin: 0.5rem;
+      }
+
+      main {
+        margin: 2rem 1rem 3rem;
+        padding: 1.5rem 2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<header>SEO Chatbot Portal</header>
+
+<nav>
+  <a href="chat.html">Home</a>
+  <a href="services.html">Services</a>
+  <a href="about.html">About</a>
+  <a href="portfolio.html">FAQ</a>
+  <a href="contact.html">Contact</a>
+  <a href="chatbot.html" >Chatbot</a>
+</nav>
+
+<main>
+  <h1>Chat with Our SEO Assistant</h1>
+
+  <div id="messages"></div>
+
+  <div id="input-area">
+    <input type="text" id="userInput" placeholder="Ask your SEO question..." autocomplete="off" />
+    <button id="sendBtn">Send</button>
+  </div>
+</main>
+
+<script>
+  const messagesDiv = document.getElementById('messages');
+  const input = document.getElementById('userInput');
+  const sendBtn = document.getElementById('sendBtn');
+
+  // Function to add message to chat
+  function addMessage(text, sender) {
+    const msgDiv = document.createElement('div');
+    msgDiv.className = 'message ' + (sender === 'user' ? 'user-msg' : 'bot-msg');
+    msgDiv.textContent = text;
+    messagesDiv.appendChild(msgDiv);
+    messagesDiv.scrollTop = messagesDiv.scrollHeight;
+  }
+
+  async function sendMessage() {
+    const text = input.value.trim();
+    if (!text) return;
+
+    addMessage(text, 'user');
+    input.value = '';
+    input.disabled = true;
+    sendBtn.disabled = true;
+
+    try {
+      const response = await fetch('http://localhost:5000/api/chatbot', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ message: text })
+      });
+
+      if (!response.ok) throw new Error('Network error');
+      const data = await response.json();
+      addMessage(data.reply, 'bot');
+    } catch (err) {
+      addMessage("Error: Unable to connect to chatbot. Please try again later.", 'bot');
+      console.error(err);
+    } finally {
+      input.disabled = false;
+      sendBtn.disabled = false;
+      input.focus();
+    }
+  }
+
+  sendBtn.addEventListener('click', sendMessage);
+  input.addEventListener('keypress', function (e) {
+    if (e.key === 'Enter') {
+      sendMessage();
+    }
+  });
+</script>
+
+<footer>
+  &copy; 2025 My Professional Website. All rights reserved.
+</footer>
+</body>
+</html>
